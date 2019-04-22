@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Actions;
 
 
 namespace Trestlebridge.Models.Facilities {
@@ -23,6 +24,7 @@ namespace Trestlebridge.Models.Facilities {
             if (_animals.Count < _capacity) {
                 _animals.Add(animal);
             }
+            else {ChooseGrazingField.atCapacity = true;}
         }
 
         public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate

@@ -6,6 +6,8 @@ using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
+
+        public static Boolean atCapacity {get; set;}= false;
         public static void CollectInput (Farm farm, IGrazing animal) {
             Console.Clear();
 
