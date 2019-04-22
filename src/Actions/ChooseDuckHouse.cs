@@ -5,11 +5,11 @@ using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions {
-    public class ChooseChickenHouse {
+    public class ChooseDuckHouse {
 
         //This boolean is used to check and see if the over capacity message needs to display
         public static Boolean atCapacity {get; set;}= false;
-        public static void CollectInput (Farm farm, Chicken animal) {
+        public static void CollectInput (Farm farm, Duck animal) {
             Console.Clear();
 
             if (atCapacity){
@@ -18,9 +18,9 @@ namespace Trestlebridge.Actions {
 **** That facililty is not large enough ****
 ****     Please choose another one      ****");
 
-                for (int i = 0; i < farm.ChickenHouses.Count; i++)
+                for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count}/15)");
+                Console.WriteLine ($"{i + 1}. Duck House ({farm.DuckHouses[i].animalsList.Count}/12)");
             }
 
             Console.WriteLine ();
@@ -32,15 +32,15 @@ namespace Trestlebridge.Actions {
             int choice = Int32.Parse(Console.ReadLine ());
             int correctedChoice = choice -1;
 
-            farm.ChickenHouses[correctedChoice].AddResource(animal, farm);
+            farm.DuckHouses[correctedChoice].AddResource(animal, farm);
 
             }
             //runs the code if you don't need the at capacity message
             else{
                 atCapacity = false;
-            for (int i = 0; i < farm.ChickenHouses.Count; i++)
+            for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count}/15)");
+                Console.WriteLine ($"{i + 1}. Duck House ({farm.DuckHouses[i].animalsList.Count}/12)");
             }
 
             Console.WriteLine ();
@@ -53,7 +53,7 @@ namespace Trestlebridge.Actions {
             //corrects the users choice to match the correct index
             int correctedChoice = choice -1;
 
-            farm.ChickenHouses[correctedChoice].AddResource(animal, farm);
+            farm.DuckHouses[correctedChoice].AddResource(animal, farm);
             }
             /*
                 Couldn't get this to work. Can you?
