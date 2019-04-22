@@ -8,7 +8,7 @@ using Trestlebridge.Actions;
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 50;
+        private int _capacity = 1;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
@@ -19,12 +19,23 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource (IGrazing animal)
+        public void AddResource (IGrazing animal, Farm farm)
         {
             if (_animals.Count < _capacity) {
                 _animals.Add(animal);
             }
-            else {ChooseGrazingField.atCapacity = true;}
+            else {
+                ChooseGrazingField.atCapacity = true;
+                ChooseGrazingField.CollectInput(farm, animal);
+            }
+        }
+
+         public void AddResource (IGrazing animal)
+        {
+            if (_animals.Count < _capacity) {
+                _animals.Add(animal);
+            }
+        
         }
 
         public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate
