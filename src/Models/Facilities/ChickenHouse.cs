@@ -9,7 +9,7 @@ using Trestlebridge.Actions;
 namespace Trestlebridge.Models.Facilities {
     public class ChickenHouse : IFacility<Chicken>
     {
-        private int _capacity = 20;
+        private int _capacity = 15;
         private Guid _id = Guid.NewGuid();
 
         private List<Chicken> _animals = new List<Chicken>();
