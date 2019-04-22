@@ -40,7 +40,7 @@ namespace Trestlebridge.Actions {
                 atCapacity = false;
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field");
+                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/20)");
             }
 
             Console.WriteLine ();
