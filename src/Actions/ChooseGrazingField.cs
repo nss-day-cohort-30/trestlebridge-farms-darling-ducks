@@ -7,6 +7,7 @@ using Trestlebridge.Models.Animals;
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
 
+        //This boolean is used to check and see if the over capacity message needs to display
         public static Boolean atCapacity {get; set;}= false;
         public static void CollectInput (Farm farm, IGrazing animal) {
             Console.Clear();
@@ -34,6 +35,7 @@ namespace Trestlebridge.Actions {
             farm.GrazingFields[correctedChoice].AddResource(animal, farm);
 
             }
+            //runs the code if you don't need the at capacity message
             else{
                 atCapacity = false; 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
@@ -48,6 +50,7 @@ namespace Trestlebridge.Actions {
 
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ());
+            //corrects the users choice to match the correct index
             int correctedChoice = choice -1;
 
             farm.GrazingFields[correctedChoice].AddResource(animal, farm);
