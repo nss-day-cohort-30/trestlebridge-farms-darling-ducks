@@ -19,6 +19,11 @@ namespace Trestlebridge.Models.Facilities {
                 return _capacity;
             }
         }
+        public List<IGrazing> animalsList {
+            get {
+                return _animals;
+            }
+        }
 
         public void AddResource (IGrazing animal)
         {

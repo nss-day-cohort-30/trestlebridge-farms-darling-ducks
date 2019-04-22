@@ -11,7 +11,7 @@ namespace Trestlebridge.Actions {
 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field");
+                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/20)");
             }
 
             Console.WriteLine ();
@@ -21,8 +21,9 @@ namespace Trestlebridge.Actions {
 
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ());
+            int correctedChoice = choice - 1;
 
-            farm.GrazingFields[choice].AddResource(animal);
+            farm.GrazingFields[correctedChoice].AddResource(animal);
 
             /*
                 Couldn't get this to work. Can you?
