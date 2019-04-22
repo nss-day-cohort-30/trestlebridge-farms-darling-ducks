@@ -9,6 +9,7 @@ namespace Trestlebridge.Models
     public class Farm
     {
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
+        public List<ChickenHouse> ChickenHouses {get;} = new List<ChickenHouse>();
 
         /*
             This method must specify the correct product interface of the
