@@ -9,9 +9,10 @@ Please delete options that are not relevant.
 
 # Testing Instructions for Change Made
 1. `git fetch --all`
-2. `git checkout [branchname]`
-3. Run server/grunt
-4. Verify .....
+1. `git checkout NAME-OF-BRANCH`
+1. dotnet run
+1. verify...
+
 
 # Checklist:
 - [] My code follows the style guidelines of this project
@@ -19,3 +20,4 @@ Please delete options that are not relevant.
 - [] I have commented my code, particularly in hard-to-understand areas
 - [] My changes generate no new warnings
 - [] I have added test instructions that prove my fix is effective or that my feature works
+
