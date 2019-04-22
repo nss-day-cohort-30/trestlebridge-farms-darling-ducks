@@ -2,13 +2,14 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 using Trestlebridge.Actions;
 
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 1;
+        private int _capacity = 20;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
@@ -16,6 +17,11 @@ namespace Trestlebridge.Models.Facilities {
         public double Capacity {
             get {
                 return _capacity;
+            }
+        }
+        public List<IGrazing> animalsList {
+            get {
+                return _animals;
             }
         }
 
@@ -35,7 +41,6 @@ namespace Trestlebridge.Models.Facilities {
             if (_animals.Count < _capacity) {
                 _animals.Add(animal);
             }
-        
         }
 
         public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate
