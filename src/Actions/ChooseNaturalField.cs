@@ -21,7 +21,10 @@ namespace Trestlebridge.Actions {
 
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/10)");
+                if (farm.NaturalFields[i].plantsList.Count < farm.NaturalFields[i].Capacity)
+                    {
+                        Console.WriteLine($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
+                    }
             }
 
             Console.WriteLine ();
@@ -41,7 +44,10 @@ namespace Trestlebridge.Actions {
                 atCapacity = false;
             for (int i = 0; i < farm.NaturalFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/10)");
+                if (farm.NaturalFields[i].plantsList.Count < farm.NaturalFields[i].Capacity)
+                    {
+                        Console.WriteLine($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
+                    }
             }
 
             Console.WriteLine ();
