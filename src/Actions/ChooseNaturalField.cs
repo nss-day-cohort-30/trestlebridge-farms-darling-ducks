@@ -10,7 +10,7 @@ namespace Trestlebridge.Actions {
 
         //This boolean is used to check and see if the over capacity message needs to display
         public static Boolean atCapacity {get; set;}= false;
-        public static void CollectInput (Farm farm, ICompostProducing plant) {
+        public static void CollectInput (Farm farm, int number, string plantType) {
             Console.Clear();
 
             if (atCapacity){
@@ -33,7 +33,7 @@ namespace Trestlebridge.Actions {
             int choice = Int32.Parse(Console.ReadLine ());
             int correctedChoice = choice -1;
 
-            farm.NaturalFields[correctedChoice].AddResource(plant, farm);
+            farm.NaturalFields[correctedChoice].AddResource(farm, number, plantType);
 
             }
             //runs the code if you don't need the at capacity message
@@ -54,7 +54,7 @@ namespace Trestlebridge.Actions {
             //corrects the users choice to match the correct index
             int correctedChoice = choice -1;
 
-            farm.NaturalFields[correctedChoice].AddResource(plant, farm);
+            farm.NaturalFields[correctedChoice].AddResource(farm, number, plantType);
             }
             /*
                 Couldn't get this to work. Can you?

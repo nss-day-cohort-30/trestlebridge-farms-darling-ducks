@@ -25,14 +25,27 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource (ISeedProducing plant, Farm farm)
+        public void AddResource (Farm farm, int number, string plantType)
         {
-            if (_plants.Count < _capacity) {
-                _plants.Add(plant);
+            if (_plants.Count + number <= _capacity) {
+                if (plantType == "sesame")
+                {
+                    for (int i = 0; i < number; i++)
+                    {
+                        _plants.Add(new Sesame());
+                    }
+                }
+                if (plantType == "sunflower")
+                {
+                    for (int i = 0; i < number; i++)
+                    {
+                        _plants.Add(new Sunflower());
+                    }
+                }
             }
             else {
                 ChoosePlowedField.atCapacity = true;
-                ChoosePlowedField.CollectInput(farm, plant);
+                ChoosePlowedField.CollectInput(farm, number, plantType);
             }
         }
 
