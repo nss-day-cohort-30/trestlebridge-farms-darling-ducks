@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
-using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Plants;
 using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions {
@@ -39,15 +39,15 @@ namespace Trestlebridge.Actions {
             //runs the code if you don't need the at capacity message
             else{
                 atCapacity = false;
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+            for (int i = 0; i < farm.NaturalFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.NaturalFields[i].plantsList.Count}/10)");
+                Console.WriteLine ($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/10)");
             }
 
             Console.WriteLine ();
 
             // How can I output the type of animal chosen here?
-            Console.WriteLine ($"Place the animal where?");
+            Console.WriteLine ($"Place the plant where?");
 
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ());
@@ -60,7 +60,7 @@ namespace Trestlebridge.Actions {
                 Couldn't get this to work. Can you?
                 Stretch goal. Only if the app is fully functional.
              */
-            // farm.PurchaseResource<IGrazing>(animal, choice);
+            // farm.PurchaseResource<ICompostProducing>(animal, choice);
 
         }
     }

@@ -20,7 +20,7 @@ namespace Trestlebridge.Actions {
 
                 for (int i = 0; i < farm.PlowedFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.PlowedFields[i].plantsList.Count}/13)");
+                Console.WriteLine ($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/13)");
             }
 
             Console.WriteLine ();
@@ -40,7 +40,7 @@ namespace Trestlebridge.Actions {
                 atCapacity = false;
             for (int i = 0; i < farm.PlowedFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.PlowedFields[i].plantsList.Count}/13)");
+                Console.WriteLine ($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/13)");
             }
 
             Console.WriteLine ();
@@ -59,7 +59,7 @@ namespace Trestlebridge.Actions {
                 Couldn't get this to work. Can you?
                 Stretch goal. Only if the app is fully functional.
              */
-            // farm.PurchaseResource<IGrazing>(plant, choice);
+            // farm.PurchaseResource<ISeedProducing>(plant, choice);
 
         }
     }
