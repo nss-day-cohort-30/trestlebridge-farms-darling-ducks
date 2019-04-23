@@ -11,7 +11,7 @@ namespace Trestlebridge.Actions
 
         //This boolean is used to check and see if the over capacity message needs to display
         public static Boolean atCapacity { get; set; } = false;
-        public static void CollectInput(Farm farm, Sunflower plant)
+        public static void CollectInput(Farm farm, int number, string plantType)
         {
             Console.Clear();
 
@@ -43,19 +43,19 @@ namespace Trestlebridge.Actions
 
                 if (farm.PlowedFields.Count == 0 && farm.NaturalFields.Count > 0)
                 {
-                    farm.NaturalFields[correctedChoice].AddResource(plant, farm);
+                    farm.NaturalFields[correctedChoice].AddResource(farm, number, plantType);
                 }
                 else if (farm.NaturalFields.Count == 0 && farm.PlowedFields.Count > 0)
                 {
-                    farm.PlowedFields[correctedChoice].AddResource(plant, farm);
+                    farm.PlowedFields[correctedChoice].AddResource(farm, number, plantType);
                 }
                 else if (correctedChoice >= farm.PlowedFields.Count)
                 {
-                    farm.NaturalFields[correctedChoice - farm.PlowedFields.Count].AddResource(plant, farm);
+                    farm.NaturalFields[correctedChoice - farm.PlowedFields.Count].AddResource(farm, number, plantType);
                 }
                 else if (correctedChoice < farm.PlowedFields.Count)
                 {
-                    farm.PlowedFields[correctedChoice].AddResource(plant, farm);
+                    farm.PlowedFields[correctedChoice].AddResource(farm, number, plantType);
                 }
 
             }
@@ -85,19 +85,19 @@ namespace Trestlebridge.Actions
 
                 if (farm.PlowedFields.Count == 0 && farm.NaturalFields.Count > 0)
                 {
-                    farm.NaturalFields[correctedChoice].AddResource(plant, farm);
+                    farm.NaturalFields[correctedChoice].AddResource(farm, number, plantType);
                 }
                 else if (farm.NaturalFields.Count == 0 && farm.PlowedFields.Count > 0)
                 {
-                    farm.PlowedFields[correctedChoice].AddResource(plant, farm);
+                    farm.PlowedFields[correctedChoice].AddResource(farm, number, plantType);
                 }
                 else if (correctedChoice >= farm.PlowedFields.Count)
                 {
-                    farm.NaturalFields[correctedChoice - farm.PlowedFields.Count].AddResource(plant, farm);
+                    farm.NaturalFields[correctedChoice - farm.PlowedFields.Count].AddResource(farm, number, plantType);
                 }
                 else if (correctedChoice < farm.PlowedFields.Count)
                 {
-                    farm.PlowedFields[correctedChoice].AddResource(plant, farm);
+                    farm.PlowedFields[correctedChoice].AddResource(farm, number, plantType);
                 }
             }
             /*
