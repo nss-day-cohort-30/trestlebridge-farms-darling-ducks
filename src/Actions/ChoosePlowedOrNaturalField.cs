@@ -27,11 +27,9 @@ namespace Trestlebridge.Actions
                     Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/13)");
                 }
 
-                Console.WriteLine();
-
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
-                    Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/13)");
+                    Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/10)");
                 }
 
                 Console.WriteLine();
@@ -70,11 +68,9 @@ namespace Trestlebridge.Actions
                     Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/13)");
                 }
 
-                Console.WriteLine();
-
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
-                    Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/13)");
+                    Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/10)");
                 }
 
                 Console.WriteLine();
