@@ -15,7 +15,7 @@ namespace Trestlebridge.Actions {
             if (atCapacity){
                 atCapacity = false;
                 Console.WriteLine($@"
-**** That facililty is not large enough ****
+**** That facility is not large enough ****
 ****     Please choose another one      ****");
 
                 for (int i = 0; i < farm.DuckHouses.Count; i++)
