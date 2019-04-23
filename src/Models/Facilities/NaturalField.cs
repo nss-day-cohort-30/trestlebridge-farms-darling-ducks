@@ -49,10 +49,16 @@ namespace Trestlebridge.Models.Facilities
                     }
                 }
             }
-            else
-            {
-                ChooseNaturalField.atCapacity = true;
+            else {
+                if (plantType == "sunflower") {
+                ChoosePlowedOrNaturalField.atCapacity = true;
+                ChoosePlowedOrNaturalField.CollectInput(farm, number, plantType);
+                }
+                else{
+                    ChooseNaturalField.atCapacity = true;
                 ChooseNaturalField.CollectInput(farm, number, plantType);
+                }
+
             }
         }
 
