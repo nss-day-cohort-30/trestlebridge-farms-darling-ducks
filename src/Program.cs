@@ -61,7 +61,7 @@ namespace Trestlebridge
                 }
                 else if (option == "5")
                 {
-                    Console.WriteLine("Today is a great day for farming");
+                    Console.WriteLine("Rest well. Tomorrow brings another day of plowing fields and ethically raising happy animals for farm-to-table restaurants all over Nashville.");
                     break;
                 }
                 else
