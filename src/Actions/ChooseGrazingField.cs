@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Reports;
 
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
@@ -18,8 +20,10 @@ namespace Trestlebridge.Actions {
 **** That facility is not large enough ****
 ****     Please choose another one      ****");
 
+
                 for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
+
                 Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/20)");
             }
 
@@ -40,7 +44,19 @@ namespace Trestlebridge.Actions {
                 atCapacity = false;
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/20)");
+                IEnumerable<GrazingFieldReport> Grazers = (from grazer in farm.GrazingFields[i].animalsList
+                                                           group grazer by grazer.Type into NewGroup
+                                                           select new GrazingFieldReport
+                                                           {
+                                                               AnimalType = NewGroup.Key,
+                                                               Number = NewGroup.Count().ToString()
+                                                           }
+
+                );
+                foreach (GrazingFieldReport grazer in Grazers)
+                {
+                    Console.WriteLine ($@"{i + 1}. Grazing Field ({grazer.Number} {grazer.AnimalType})");
+                }
             }
 
             Console.WriteLine ();

@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Reports;
 using Trestlebridge.Actions;
 
 
