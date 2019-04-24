@@ -6,15 +6,19 @@ using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Reports;
 
-namespace Trestlebridge.Actions {
-    public class ChooseGrazingField {
+namespace Trestlebridge.Actions
+{
+    public class ChooseGrazingField
+    {
 
         //This boolean is used to check and see if the over capacity message needs to display
-        public static Boolean atCapacity {get; set;}= false;
-        public static void CollectInput (Farm farm, IGrazing animal) {
+        public static Boolean atCapacity { get; set; } = false;
+        public static void CollectInput(Farm farm, IGrazing animal)
+        {
             Console.Clear();
 
-            if (atCapacity){
+            if (atCapacity)
+            {
                 atCapacity = false;
                 Console.WriteLine($@"
 **** That facility is not large enough ****
@@ -22,54 +26,62 @@ namespace Trestlebridge.Actions {
 
 
                 for (int i = 0; i < farm.GrazingFields.Count; i++)
-            {
+                {
+                    if (farm.GrazingFields[i].animalsList.Count < farm.GrazingFields[i].Capacity)
+                    {
+                        Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/{farm.GrazingFields[i].Capacity})");
+                    }
+                }
 
-                Console.WriteLine ($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/20)");
-            }
+                Console.WriteLine();
 
-            Console.WriteLine ();
+                // How can I output the type of animal chosen here?
+                Console.WriteLine($"Place the animal where?");
 
-            // How can I output the type of animal chosen here?
-            Console.WriteLine ($"Place the animal where?");
+                Console.Write("> ");
+                int choice = Int32.Parse(Console.ReadLine());
+                int correctedChoice = choice - 1;
 
-            Console.Write ("> ");
-            int choice = Int32.Parse(Console.ReadLine ());
-            int correctedChoice = choice -1;
-
-            farm.GrazingFields[correctedChoice].AddResource(animal, farm);
+                farm.GrazingFields[correctedChoice].AddResource(animal, farm);
 
             }
             //runs the code if you don't need the at capacity message
-            else{
-                atCapacity = false;
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+            else
             {
-                IEnumerable<GrazingFieldReport> Grazers = (from grazer in farm.GrazingFields[i].animalsList
-                                                           group grazer by grazer.Type into NewGroup
-                                                           select new GrazingFieldReport
-                                                           {
-                                                               AnimalType = NewGroup.Key,
-                                                               Number = NewGroup.Count().ToString()
-                                                           }
-
-                );
-                foreach (GrazingFieldReport grazer in Grazers)
+                atCapacity = false;
+                for (int i = 0; i < farm.GrazingFields.Count; i++)
                 {
-                    Console.WriteLine ($@"{i + 1}. Grazing Field ({grazer.Number} {grazer.AnimalType})");
+                         IEnumerable<GrazingFieldReport> Grazers = (from grazer in farm.GrazingFields[i].animalsList
+                                                               group grazer by grazer.Type into NewGroup
+                                                               select new GrazingFieldReport
+                                                               {
+                                                                   AnimalType = NewGroup.Key,
+                                                                   Number = NewGroup.Count().ToString()
+                                                               }
+
+                    );
+                    foreach (GrazingFieldReport grazer in Grazers)
+                    {
+                        Console.WriteLine($@"{i + 1}. Grazing Field ({grazer.Number} {grazer.AnimalType})");
+                    }
+                    if (farm.GrazingFields[i].animalsList.Count < farm.GrazingFields[i].Capacity)
+                    {
+                        // Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/{farm.GrazingFields[i].Capacity})");
+                    }
+
                 }
-            }
 
-            Console.WriteLine ();
+                Console.WriteLine();
 
-            // How can I output the type of animal chosen here?
-            Console.WriteLine ($"Place the animal where?");
+                // How can I output the type of animal chosen here?
+                Console.WriteLine($"Place the animal where?");
 
-            Console.Write ("> ");
-            int choice = Int32.Parse(Console.ReadLine ());
-            //corrects the users choice to match the correct index
-            int correctedChoice = choice -1;
+                Console.Write("> ");
+                int choice = Int32.Parse(Console.ReadLine());
+                //corrects the users choice to match the correct index
+                int correctedChoice = choice - 1;
 
-            farm.GrazingFields[correctedChoice].AddResource(animal, farm);
+                farm.GrazingFields[correctedChoice].AddResource(animal, farm);
             }
             /*
                 Couldn't get this to work. Can you?
