@@ -45,6 +45,7 @@ namespace Trestlebridge.Actions
                 }
             }
             catch (FormatException) { }
+            catch (ArgumentOutOfRangeException) { }
         }
     }
 }
