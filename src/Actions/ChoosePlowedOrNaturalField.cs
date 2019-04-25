@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Plants;
+using Trestlebridge.Models.Reports;
 
 namespace Trestlebridge.Actions
 {
@@ -71,18 +73,47 @@ namespace Trestlebridge.Actions
                 atCapacity = false;
                 for (int i = 0; i < farm.PlowedFields.Count; i++)
                 {
+                    Console.Write($"{i + 1}. Plowed Field ");
+                    IEnumerable<PlowedFieldReport> MultipleFieldFlowers = (from flower in farm.PlowedFields[i].plantsList
+                                                                            group flower by flower.Type into NewGroup
+                                                                            select new PlowedFieldReport
+                                                                            {
+                                                                                PlantType = NewGroup.Key,
+                                                                                Number = NewGroup.Count().ToString()
+                                                                            }
+                    );
+                    foreach (PlowedFieldReport flower in MultipleFieldFlowers)
+                    {
+                        Console.Write($@" {flower.Number} {flower.PlantType}");
+                    }
+
                     if (farm.PlowedFields[i].plantsList.Count < farm.PlowedFields[i].Capacity)
                     {
-                        Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/{farm.PlowedFields[i].Capacity})");
+                        // Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}/{farm.PlowedFields[i].Capacity})");
                     }
+                    Console.WriteLine("\n");
                 }
 
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
+                    Console.Write($"{i + 1}. Natural Field ");
+                    IEnumerable<NaturalFieldReport> ManyFieldFlowers = (from flower in farm.NaturalFields[i].plantsList
+                                                                            group flower by flower.Type into NewGroup
+                                                                            select new NaturalFieldReport
+                                                                            {
+                                                                                PlantType = NewGroup.Key,
+                                                                                Number = NewGroup.Count().ToString()
+                                                                            }
+                    );
+                    foreach (NaturalFieldReport flower in ManyFieldFlowers)
+                    {
+                        Console.Write($@" {flower.Number} {flower.PlantType}");
+                    }
                     if (farm.NaturalFields[i].plantsList.Count < farm.NaturalFields[i].Capacity)
                     {
-                        Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
+                        // Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
                     }
+                    Console.WriteLine("\n");
                 }
 
                 Console.WriteLine();
