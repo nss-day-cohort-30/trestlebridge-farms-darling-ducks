@@ -13,12 +13,12 @@ namespace Trestlebridge.Actions {
 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
                 {
-                        Console.WriteLine($"{i + 1}. Grazing Field ({farm.PlowedFields[i].plantsList.Count})");
+                        Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count})");
                 }
 
                 for (int i = 0; i < farm.ChickenHouses.Count; i++)
                 {
-                        Console.WriteLine($"{farm.GrazingFields.Count + i + 1}. Chiken House ({farm.ChickenHouses[i].animalsList.Count})");
+                        Console.WriteLine($"{farm.GrazingFields.Count + i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count})");
 
                 }
 
@@ -28,6 +28,7 @@ namespace Trestlebridge.Actions {
                 Console.WriteLine($"Which Facility would you like to process");
 
                 Console.Write("> ");
+                Console.ReadLine();
             //     int choice = Int32.Parse(Console.ReadLine());
             //     int correctedChoice = choice - 1;
 
