@@ -20,6 +20,16 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string choice = Console.ReadLine();
 
+            switch (Int32.Parse(choice))
+                {
+                  
+                    case 2:
+                        ChooseMeatProcessor.CollectInput(farm);
+                        break;
+                    default:
+                        break;
+                }
+
 
         }
     }
