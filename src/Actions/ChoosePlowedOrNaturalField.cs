@@ -75,12 +75,12 @@ namespace Trestlebridge.Actions
                 {
                     Console.Write($"{i + 1}. Plowed Field ");
                     IEnumerable<PlowedFieldReport> MultipleFieldFlowers = (from flower in farm.PlowedFields[i].plantsList
-                                                                            group flower by flower.Type into NewGroup
-                                                                            select new PlowedFieldReport
-                                                                            {
-                                                                                PlantType = NewGroup.Key,
-                                                                                Number = NewGroup.Count().ToString()
-                                                                            }
+                                                                           group flower by flower.Type into NewGroup
+                                                                           select new PlowedFieldReport
+                                                                           {
+                                                                               PlantType = NewGroup.Key,
+                                                                               Number = NewGroup.Count().ToString()
+                                                                           }
                     );
                     foreach (PlowedFieldReport flower in MultipleFieldFlowers)
                     {
@@ -98,12 +98,12 @@ namespace Trestlebridge.Actions
                 {
                     Console.Write($"{i + 1}. Natural Field ");
                     IEnumerable<NaturalFieldReport> ManyFieldFlowers = (from flower in farm.NaturalFields[i].plantsList
-                                                                            group flower by flower.Type into NewGroup
-                                                                            select new NaturalFieldReport
-                                                                            {
-                                                                                PlantType = NewGroup.Key,
-                                                                                Number = NewGroup.Count().ToString()
-                                                                            }
+                                                                        group flower by flower.Type into NewGroup
+                                                                        select new NaturalFieldReport
+                                                                        {
+                                                                            PlantType = NewGroup.Key,
+                                                                            Number = NewGroup.Count().ToString()
+                                                                        }
                     );
                     foreach (NaturalFieldReport flower in ManyFieldFlowers)
                     {
