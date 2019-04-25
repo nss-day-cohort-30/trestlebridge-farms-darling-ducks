@@ -13,7 +13,7 @@ namespace Trestlebridge.Actions {
 
             for (int i = 0; i < farm.DuckHouses.Count; i++)
                 {
-                        Console.WriteLine($"{i + 1}. Grazing Field ({farm.DuckHouses[i].animalsList.Count})");
+                        Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].animalsList.Count})");
                 }
 
                 for (int i = 0; i < farm.ChickenHouses.Count; i++)
