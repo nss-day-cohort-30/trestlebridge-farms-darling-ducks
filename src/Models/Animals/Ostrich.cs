@@ -6,6 +6,7 @@ namespace Trestlebridge.Models.Animals {
     public class Ostrich : IResource, IGrazing, IMeatProducing {
 
         private Guid _id = Guid.NewGuid();
+        private double _eggsProduced = 3.0;
         private double _meatProduced = 2.6;
 
         private string _shortId {
@@ -24,6 +25,9 @@ namespace Trestlebridge.Models.Animals {
 
         public double Butcher () {
             return _meatProduced;
+        }
+        public double gatherEggs () {
+            return _eggsProduced;
         }
 
         public override string ToString () {
