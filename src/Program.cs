@@ -7,6 +7,8 @@ namespace Trestlebridge
 {
   class Program
   {
+
+    // Method to display banner for FARMS program
     static void DisplayBanner()
     {
       Console.Clear();
@@ -20,15 +22,19 @@ namespace Trestlebridge
       Console.WriteLine();
     }
 
+    // Main method to launch program. Also sets foreground color to white and background to dark blue, harkening a simpler more Commodore 64-esque era.
     static void Main(string[] args)
     {
       Console.ForegroundColor = ConsoleColor.White;
       Console.BackgroundColor = ConsoleColor.DarkBlue;
 
+      // Creates Trestlebridge object
       Farm Trestlebridge = new Farm();
 
+      // While loop keeps user in FARMS program
       while (true)
       {
+        // Displays banner and main menu options to user
         DisplayBanner();
         Console.WriteLine("1. Create Facility");
         Console.WriteLine("2. Purchase Animals");
@@ -38,10 +44,12 @@ namespace Trestlebridge
         Console.WriteLine("6. Exit");
         Console.WriteLine();
 
+        // Prompts user to select the number of the desired option
         Console.WriteLine("Choose a FARMS option");
         Console.Write("> ");
         string option = Console.ReadLine();
 
+        // Reads user's input and presents the associated sub-menu for the chosen option
         if (option == "1")
         {
           DisplayBanner();
@@ -71,6 +79,8 @@ namespace Trestlebridge
           Console.WriteLine("Press return key to go back to main menu.");
           Console.ReadLine();
         }
+
+        // Exits program and prints a warm departure message to the user
         else if (option == "6")
         {
           Console.WriteLine("Rest well. Tomorrow brings another day of plowing fields and ethically raising happy animals for farm-to-table restaurants all over Nashville.");
