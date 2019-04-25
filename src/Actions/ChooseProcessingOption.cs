@@ -22,9 +22,15 @@ namespace Trestlebridge.Actions
 
             switch (Int32.Parse(choice))
                 {
-                  
+
                     case 2:
                         ChooseMeatProcessor.CollectInput(farm);
+                        break;
+                    case 4:
+                        ChooseComposter.CollectInput(farm);
+                        break;
+                    case 5:
+                        ChooseFeatherHarvester.CollectInput(farm);
                         break;
                     default:
                         break;
