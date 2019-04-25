@@ -63,7 +63,7 @@ namespace Trestlebridge.Actions
                     foreach (GrazingFieldReport grazer in Grazers)
                     {
                         Console.Write($@"({grazer.Number} {grazer.AnimalType})");
-                        Console.WriteLine();
+                        
                     }
                     if (farm.GrazingFields[i].animalsList.Count < farm.GrazingFields[i].Capacity)
                     {
