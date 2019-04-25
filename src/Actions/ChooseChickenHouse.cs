@@ -22,7 +22,7 @@ namespace Trestlebridge.Actions {
             {
                 if (farm.ChickenHouses[i].animalsList.Count < farm.ChickenHouses[i].Capacity)
                     {
-                        Console.WriteLine($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count}/{farm.ChickenHouses[i].Capacity})");
+                        Console.WriteLine($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count} chickens/{farm.ChickenHouses[i].Capacity})");
                     }
             }
 
@@ -45,8 +45,9 @@ namespace Trestlebridge.Actions {
             {
                 if (farm.ChickenHouses[i].animalsList.Count < farm.ChickenHouses[i].Capacity)
                     {
-                        Console.WriteLine($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count}/{farm.ChickenHouses[i].Capacity})");
+                        Console.WriteLine($"{i + 1}. Chicken House ({farm.ChickenHouses[i].animalsList.Count} chickens/{farm.ChickenHouses[i].Capacity})");
                     }
+                    Console.WriteLine("\n");
             }
 
             Console.WriteLine ();
