@@ -23,7 +23,7 @@ namespace Trestlebridge
     static void Main(string[] args)
     {
       Console.ForegroundColor = ConsoleColor.White;
-      Console.BackgroundColor = ConsoleColor.DarkMagenta;
+      Console.BackgroundColor = ConsoleColor.DarkBlue;
 
       Farm Trestlebridge = new Farm();
 
@@ -33,8 +33,9 @@ namespace Trestlebridge
         Console.WriteLine("1. Create Facility");
         Console.WriteLine("2. Purchase Animals");
         Console.WriteLine("3. Purchase Seeds");
-        Console.WriteLine("4. Display Farm Status");
-        Console.WriteLine("5. Exit");
+        Console.WriteLine("4. Process Farm Products");
+        Console.WriteLine("5. Display Farm Status");
+        Console.WriteLine("6. Exit");
         Console.WriteLine();
 
         Console.WriteLine("Choose a FARMS option");
@@ -59,12 +60,18 @@ namespace Trestlebridge
         else if (option == "4")
         {
           DisplayBanner();
+          ChooseProcessingOption.CollectInput(Trestlebridge);
+        }
+
+        else if (option == "5")
+        {
+          DisplayBanner();
           Console.WriteLine(Trestlebridge);
           Console.WriteLine("\n\n\n");
           Console.WriteLine("Press return key to go back to main menu.");
           Console.ReadLine();
         }
-        else if (option == "5")
+        else if (option == "6")
         {
           Console.WriteLine("Rest well. Tomorrow brings another day of plowing fields and ethically raising happy animals for farm-to-table restaurants all over Nashville.");
           break;
