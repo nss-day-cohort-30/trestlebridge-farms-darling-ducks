@@ -53,8 +53,18 @@ namespace Trestlebridge.Actions
                         break;
                 }
             }
-            catch (FormatException) { }
-            catch (ArgumentOutOfRangeException) { }
+            catch (FormatException)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input! Press any key to return home");
+                Console.ReadLine();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid input! Press any key to return home");
+                Console.ReadLine();
+            }
         }
     }
 }
