@@ -27,7 +27,7 @@ namespace Trestlebridge.Actions
                 {
                     if (farm.DuckHouses[i].animalsList.Count < farm.DuckHouses[i].Capacity)
                     {
-                        Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].animalsList.Count}/{farm.DuckHouses[i].Capacity})");
+                        Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].animalsList.Count} ducks/{farm.DuckHouses[i].Capacity})");
                     }
                 }
 

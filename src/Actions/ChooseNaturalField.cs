@@ -27,10 +27,25 @@ namespace Trestlebridge.Actions
 
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
+                    Console.Write($"{i + 1}. Natural Field ");
+                    IEnumerable<NaturalFieldReport> NaturalFlowers = (from flower in farm.NaturalFields[i].plantsList
+                                                                      group flower by flower.Type into NewGroup
+                                                                      select new NaturalFieldReport
+                                                                      {
+                                                                          PlantType = NewGroup.Key,
+                                                                          Number = NewGroup.Count().ToString()
+                                                                      }
+                    );
+                    foreach (NaturalFieldReport flower in NaturalFlowers)
+                    {
+                        Console.Write($@"({flower.Number} {flower.PlantType})");
+                    }
+
                     if (farm.NaturalFields[i].plantsList.Count < farm.NaturalFields[i].Capacity)
                     {
-                        Console.WriteLine($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
+                        // Console.WriteLine($"{i + 1}. Natural Field ({farm.NaturalFields[i].plantsList.Count}/{farm.NaturalFields[i].Capacity})");
                     }
+                        Console.WriteLine("\n");
                 }
 
                 Console.WriteLine();
