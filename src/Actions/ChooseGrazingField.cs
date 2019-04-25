@@ -50,7 +50,7 @@ namespace Trestlebridge.Actions
             {
                 atCapacity = false;
                 for (int i = 0; i < farm.GrazingFields.Count; i++)
-                {
+                {   Console.Write($"{i + 1}. Grazing Field ");
                          IEnumerable<GrazingFieldReport> Grazers = (from grazer in farm.GrazingFields[i].animalsList
                                                                group grazer by grazer.Type into NewGroup
                                                                select new GrazingFieldReport
@@ -62,13 +62,14 @@ namespace Trestlebridge.Actions
                     );
                     foreach (GrazingFieldReport grazer in Grazers)
                     {
-                        Console.Write($@"{i + 1}. Grazing Field ({grazer.Number} {grazer.AnimalType})");
+                        Console.Write($@"({grazer.Number} {grazer.AnimalType})");
+                        Console.WriteLine();
                     }
                     if (farm.GrazingFields[i].animalsList.Count < farm.GrazingFields[i].Capacity)
                     {
                         // Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].animalsList.Count}/{farm.GrazingFields[i].Capacity})");
                     }
-
+                        Console.WriteLine("\n");
                 }
 
                 Console.WriteLine();
