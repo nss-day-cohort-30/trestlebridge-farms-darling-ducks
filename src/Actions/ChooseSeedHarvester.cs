@@ -46,7 +46,7 @@ namespace Trestlebridge.Actions
             else if (farm.NaturalFields.Count == 0 && farm.PlowedFields.Count > 0)
             {
                 string shortId = farm.PlowedFields[correctedChoice].ShortId;
-                // SeedHarvesterInPlowedField.ListResources(farm, shortId, "Plowed Field");
+                SeedHarvesterInPlowedField.ListResources(farm, shortId, "Plowed Field");
             }
             else if (correctedChoice >= farm.PlowedFields.Count)
             {
@@ -56,7 +56,7 @@ namespace Trestlebridge.Actions
             else if (correctedChoice < farm.PlowedFields.Count)
             {
                 string shortId = farm.PlowedFields[correctedChoice].ShortId;
-                // SeedHarvesterInPlowedField.ListResources(farm, shortId, "Plowed Field");
+                SeedHarvesterInPlowedField.ListResources(farm, shortId, "Plowed Field");
             }
 
             // farm.NaturalFields[correctedChoice].AddResource(farm, number, plantType);
