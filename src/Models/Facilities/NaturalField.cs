@@ -13,6 +13,14 @@ namespace Trestlebridge.Models.Facilities
         private int _capacity = 10;
         private Guid _id = Guid.NewGuid();
 
+        public string ShortId
+        {
+            get
+            {
+                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+            }
+        }
+
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
 
         public double Capacity
@@ -49,14 +57,17 @@ namespace Trestlebridge.Models.Facilities
                     }
                 }
             }
-            else {
-                if (plantType == "sunflower") {
-                ChoosePlowedOrNaturalField.atCapacity = true;
-                ChoosePlowedOrNaturalField.CollectInput(farm, number, plantType);
+            else
+            {
+                if (plantType == "sunflower")
+                {
+                    ChoosePlowedOrNaturalField.atCapacity = true;
+                    ChoosePlowedOrNaturalField.CollectInput(farm, number, plantType);
                 }
-                else{
+                else
+                {
                     ChooseNaturalField.atCapacity = true;
-                ChooseNaturalField.CollectInput(farm, number, plantType);
+                    ChooseNaturalField.CollectInput(farm, number, plantType);
                 }
 
             }
