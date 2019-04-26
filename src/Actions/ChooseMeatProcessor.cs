@@ -28,7 +28,7 @@ namespace Trestlebridge.Actions
       Console.WriteLine();
 
       // How can I output the type of plant chosen here?
-      Console.WriteLine($"Which Facility would you like to process");
+      Console.WriteLine($"Which Facility would you like to process?");
 
       Console.Write("> ");
       int choice = Int32.Parse(Console.ReadLine());
@@ -52,6 +52,7 @@ namespace Trestlebridge.Actions
       else if (correctedChoice < farm.GrazingFields.Count)
       {
         string shortId = farm.GrazingFields[correctedChoice].ShortId;
+        MeatProcessorInGrazingField.ListResources(farm, shortId, "Grazing Field");
 
         Console.ReadLine();
         //     int choice = Int32.Parse(Console.ReadLine());
