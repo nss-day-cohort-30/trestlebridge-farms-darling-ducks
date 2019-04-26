@@ -14,6 +14,8 @@ namespace Trestlebridge.Models
         public List<NaturalField> NaturalFields {get;} = new List<NaturalField>();
         public List<DuckHouse> DuckHouses {get;} = new List<DuckHouse>();
 
+        public List<ToProcess> ProcessingList {get; set;} = new List<ToProcess>();
+
         /*
             This method must specify the correct product interface of the
             resource being purchased.
