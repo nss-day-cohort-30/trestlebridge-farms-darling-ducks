@@ -60,9 +60,14 @@ namespace Trestlebridge.Actions
             Console.WriteLine($"How many {PlantType} should be processed? (Max 5)");
             int amountToProcess = Int32.Parse(Console.ReadLine());
 
-            while (amountToProcess > 5 || amountToProcess > numberToCheckSunflower)
+            while (amountToProcess > 5)
             {
-                Console.WriteLine("Learn to read, dumbass");
+                Console.WriteLine("Yo I can't process that much at once, dumbass");
+                amountToProcess = Int32.Parse(Console.ReadLine());
+            }
+            while (amountToProcess > numberToCheckSunflower)
+            {
+                Console.WriteLine("Yo there aren't that many to process, dumbass");
                 amountToProcess = Int32.Parse(Console.ReadLine());
             }
 
