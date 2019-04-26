@@ -31,7 +31,7 @@ namespace Trestlebridge.Actions
                                                                       where animal.Type == "Ostrich"
                                                                       select animal;
 
-                Console.WriteLine($"{farm.DuckHouses.Count + farm.ChickenHouses.Count + i + 1}. Grazing Field ({ostrichInGrazingField.Count()} Ostrich)");
+                Console.WriteLine($"{farm.DuckHouses.Count + farm.ChickenHouses.Count + i + 1}. Grazing Field ({ostrichInGrazingField.Count()})");
             }
 
       Console.WriteLine();
