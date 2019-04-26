@@ -13,11 +13,34 @@ namespace Trestlebridge.Actions
 
         public static void CollectInput(Farm farm)
         {
+
+            IEnumerable<ToProcess> SesameProcesses = from process in farm.ProcessingList
+            where process.Type == "Sesame"
+            select process;
+
+            int alreadyProcessedSesames = 0;
+
+            foreach (ToProcess process in SesameProcesses)
+            {
+                alreadyProcessedSesames = alreadyProcessedSesames + process.AmountToProcess;
+            }
+
+            IEnumerable<ToProcess> SunflowerProcesses = from process in farm.ProcessingList
+            where process.Type == "Sunflower"
+            select process;
+
+            int alreadyProcessedSunflowers = 0;
+
+            foreach (ToProcess process in SunflowerProcesses)
+            {
+                alreadyProcessedSunflowers = alreadyProcessedSunflowers + process.AmountToProcess;
+            }
+
             Console.Clear();
 
             for (int i = 0; i < farm.PlowedFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count}) plants");
+                Console.WriteLine($"{i + 1}. Plowed Field ({farm.PlowedFields[i].plantsList.Count - alreadyProcessedSesames}) plants");
             }
 
             for (int i = 0; i < farm.NaturalFields.Count; i++)
@@ -26,7 +49,7 @@ namespace Trestlebridge.Actions
                                                                           where plant.Type == "Sunflower"
                                                                           select plant;
 
-                Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({sunflowersInNaturalField.Count()}) plants");
+                Console.WriteLine($"{farm.PlowedFields.Count + i + 1}. Natural Field ({sunflowersInNaturalField.Count() - alreadyProcessedSunflowers}) plants");
             }
 
             Console.WriteLine();
@@ -41,7 +64,7 @@ namespace Trestlebridge.Actions
             if (farm.PlowedFields.Count == 0 && farm.NaturalFields.Count > 0)
             {
                 string shortId = farm.NaturalFields[correctedChoice].ShortId;
-                SeedHarvesterInNaturalField.ListResources(farm, shortId, "Natural Field");
+                SeedHarvesterInNaturalField.ListResources(farm, shortId, "Natural Field", alreadyProcessedSunflowers);
             }
             else if (farm.NaturalFields.Count == 0 && farm.PlowedFields.Count > 0)
             {
@@ -51,7 +74,7 @@ namespace Trestlebridge.Actions
             else if (correctedChoice >= farm.PlowedFields.Count)
             {
                 string shortId = farm.NaturalFields[correctedChoice - farm.PlowedFields.Count].ShortId;
-                SeedHarvesterInNaturalField.ListResources(farm, shortId, "Natural Field");
+                SeedHarvesterInNaturalField.ListResources(farm, shortId, "Natural Field", alreadyProcessedSunflowers);
             }
             else if (correctedChoice < farm.PlowedFields.Count)
             {
