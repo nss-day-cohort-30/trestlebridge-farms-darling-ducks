@@ -38,7 +38,10 @@ namespace Trestlebridge.Actions
             Console.WriteLine();
             foreach (NaturalFieldReport flower in OrderedFlowers)
             {
-                Console.WriteLine($"{count}: {flower.Number} {flower.PlantType}");
+                if (flower.PlantType == "Sunflower")
+                {
+                    Console.WriteLine($"{count}: {flower.Number} {flower.PlantType}");
+                }
                 count++;
             }
 
@@ -58,7 +61,7 @@ namespace Trestlebridge.Actions
                 Console.WriteLine("Learn to read, dumbass");
                 amountToProcess = Int32.Parse(Console.ReadLine());
             }
-            else
+            if (amountToProcess <= 5)
             {
                 farm.ProcessingList.Add(new ToProcess
                 {
