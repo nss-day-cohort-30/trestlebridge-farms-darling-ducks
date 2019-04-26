@@ -10,7 +10,7 @@ namespace Trestlebridge.Actions
 {
     public class SeedHarvesterInNaturalField
     {
-        public static void ListResources(Farm farm, string id, string type)
+        public static void ListResources(Farm farm, string id, string type, int alreadyProcessedSunflowers)
         {
             IEnumerable<NaturalField> CorrectFieldEnumerable = from field in farm.NaturalFields
                                                                where field.ShortId == id
@@ -37,12 +37,15 @@ namespace Trestlebridge.Actions
 
             int count = 1;
 
+            int numberToCheckSunflower = 0;
+
             Console.WriteLine();
-            Console.WriteLine("The following flowers are in the Natural Field");
+            Console.WriteLine("The following flowers can be processed in the Natural Field");
             Console.WriteLine();
             foreach (NaturalFieldReport flower in JustSunflowers)
             {
-                Console.WriteLine($"{count}: {flower.Number} {flower.PlantType}");
+                numberToCheckSunflower = Int32.Parse(flower.Number) - alreadyProcessedSunflowers;
+                Console.WriteLine($"{count}: {numberToCheckSunflower} {flower.PlantType}");
                 count++;
             }
 
@@ -57,34 +60,37 @@ namespace Trestlebridge.Actions
             Console.WriteLine($"How many {PlantType} should be processed? (Max 5)");
             int amountToProcess = Int32.Parse(Console.ReadLine());
 
-            if (amountToProcess > 5)
+            while (amountToProcess > 5)
             {
-                Console.WriteLine("Learn to read, dumbass");
+                Console.WriteLine("Yo I can't process that much at once, dumbass");
                 amountToProcess = Int32.Parse(Console.ReadLine());
             }
-            if (amountToProcess <= 5)
+            while (amountToProcess > numberToCheckSunflower)
             {
-                farm.ProcessingList.Add(new ToProcess
-                {
-                    FacilityId = CorrectField.ShortId,
-                    Type = PlantType,
-                    AmountToProcess = amountToProcess
-                });
+                Console.WriteLine("Yo there aren't that many to process, dumbass");
+                amountToProcess = Int32.Parse(Console.ReadLine());
+            }
 
-                Console.WriteLine("Ready to process? (Y/n)");
-                Console.Write("> ");
-                string input = Console.ReadLine();
+            farm.ProcessingList.Add(new ToProcess
+            {
+                FacilityId = CorrectField.ShortId,
+                Type = PlantType,
+                AmountToProcess = amountToProcess
+            });
 
-                switch (input)
-                {
-                    case "Y":
-                        break;
-                    case "n":
-                        ChooseSeedHarvester.CollectInput(farm);
-                        break;
-                    default:
-                        break;
-                }
+            Console.WriteLine("Ready to process? (Y/n)");
+            Console.Write("> ");
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "Y":
+                    break;
+                case "n":
+                    ChooseSeedHarvester.CollectInput(farm);
+                    break;
+                default:
+                    break;
             }
         }
     }
