@@ -29,19 +29,20 @@ namespace Trestlebridge.Actions
                                                               }
                 );
 
-            List<NaturalFieldReport> OrderedFlowersList = OrderedFlowers.ToList();
+            IEnumerable<NaturalFieldReport> JustSunflowers = from flower in OrderedFlowers
+                                                             where flower.PlantType == "Sunflower"
+                                                             select flower;
+
+            List<NaturalFieldReport> OrderedSunflowersList = JustSunflowers.ToList();
 
             int count = 1;
 
             Console.WriteLine();
             Console.WriteLine("The following flowers are in the Natural Field");
             Console.WriteLine();
-            foreach (NaturalFieldReport flower in OrderedFlowers)
+            foreach (NaturalFieldReport flower in JustSunflowers)
             {
-                if (flower.PlantType == "Sunflower")
-                {
-                    Console.WriteLine($"{count}: {flower.Number} {flower.PlantType}");
-                }
+                Console.WriteLine($"{count}: {flower.Number} {flower.PlantType}");
                 count++;
             }
 
@@ -51,7 +52,7 @@ namespace Trestlebridge.Actions
             int choice = Int32.Parse(Console.ReadLine());
             int correctedChoice = choice - 1;
 
-            string PlantType = OrderedFlowersList[correctedChoice].PlantType;
+            string PlantType = OrderedSunflowersList[correctedChoice].PlantType;
 
             Console.WriteLine($"How many {PlantType} should be processed? (Max 5)");
             int amountToProcess = Int32.Parse(Console.ReadLine());
