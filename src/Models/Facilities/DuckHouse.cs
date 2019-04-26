@@ -6,46 +6,63 @@ using Trestlebridge.Models.Animals;
 using Trestlebridge.Actions;
 
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class DuckHouse : IFacility<Duck>
     {
         private int _capacity = 12;
         private Guid _id = Guid.NewGuid();
 
+        public string ShortId
+        {
+            get
+            {
+                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+            }
+        }
+
         private List<Duck> _animals = new List<Duck>();
 
-        public double Capacity {
-            get {
+        public double Capacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
-        public List<Duck> animalsList {
-            get {
+        public List<Duck> animalsList
+        {
+            get
+            {
                 return _animals;
             }
         }
 
-        public void AddResource (Duck animal, Farm farm)
+        public void AddResource(Duck animal, Farm farm)
         {
-            if (_animals.Count < _capacity) {
+            if (_animals.Count < _capacity)
+            {
                 _animals.Add(animal);
             }
-            else {
+            else
+            {
                 ChooseDuckHouse.atCapacity = true;
                 ChooseDuckHouse.CollectInput(farm, animal);
             }
         }
 
-         public void AddResource (Duck animal)
+        public void AddResource(Duck animal)
         {
-            if (_animals.Count < _capacity) {
+            if (_animals.Count < _capacity)
+            {
                 _animals.Add(animal);
             }
         }
 
-        public void AddResource (List<Duck> animals)  // TODO: Take out this method for boilerplate
+        public void AddResource(List<Duck> animals)  // TODO: Take out this method for boilerplate
         {
-            if (_animals.Count + animals.Count <= _capacity) {
+            if (_animals.Count + animals.Count <= _capacity)
+            {
                 _animals.AddRange(animals);
             }
         }

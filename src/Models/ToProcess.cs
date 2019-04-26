@@ -8,7 +8,7 @@ namespace Trestlebridge.Models
 {
     public class ToProcess
     {
-        public string FieldId { get; set; }
+        public string FacilityId { get; set; }
         public string Type { get; set; }
         public int AmountToProcess { get; set; }
 

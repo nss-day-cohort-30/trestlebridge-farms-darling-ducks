@@ -7,46 +7,63 @@ using Trestlebridge.Models.Reports;
 using Trestlebridge.Actions;
 
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class GrazingField : IFacility<IGrazing>
     {
         private int _capacity = 20;
         private Guid _id = Guid.NewGuid();
 
+        public string ShortId
+        {
+            get
+            {
+                return this._id.ToString().Substring(this._id.ToString().Length - 6);
+            }
+        }
+
         private List<IGrazing> _animals = new List<IGrazing>();
 
-        public double Capacity {
-            get {
+        public double Capacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
-        public List<IGrazing> animalsList {
-            get {
+        public List<IGrazing> animalsList
+        {
+            get
+            {
                 return _animals;
             }
         }
 
-        public void AddResource (IGrazing animal, Farm farm)
+        public void AddResource(IGrazing animal, Farm farm)
         {
-            if (_animals.Count < _capacity) {
+            if (_animals.Count < _capacity)
+            {
                 _animals.Add(animal);
             }
-            else {
+            else
+            {
                 ChooseGrazingField.atCapacity = true;
                 ChooseGrazingField.CollectInput(farm, animal);
             }
         }
 
-         public void AddResource (IGrazing animal)
+        public void AddResource(IGrazing animal)
         {
-            if (_animals.Count < _capacity) {
+            if (_animals.Count < _capacity)
+            {
                 _animals.Add(animal);
             }
         }
 
-        public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate
+        public void AddResource(List<IGrazing> animals)  // TODO: Take out this method for boilerplate
         {
-            if (_animals.Count + animals.Count <= _capacity) {
+            if (_animals.Count + animals.Count <= _capacity)
+            {
                 _animals.AddRange(animals);
             }
         }
